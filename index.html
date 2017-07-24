@@ -8,7 +8,8 @@
   </head>
   <body>
     <nav>
-      <h1>Facebook</h1>
+      <img id="logo" src="https://www.facebook.com/rsrc.php/v3/y4/r/gf6iHxsw8zm.png"
+          width="140px" height="35px">
       <table cellspacing="0" role="presentation">
         <tbody>
           <tr>
@@ -45,13 +46,41 @@
       </table>
     </nav>
 
-    <div class="container">
-      <section>
+    <div id="container">
+      <div id="imagen">
+        <div id="text-help">
+          Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.
+        </div>
         <img src="https://www.facebook.com/rsrc.php/v3/yx/r/pyNVUg5EM0j.png" alt="">
-      </section>
-      <section>
-      </section>
+      </div>
+      <div id="register">
+        <div id=title-register>
+          <h2>Abre una cuenta</h2>
+          <p id="descripttionresgister">Es gratis y lo será siempre</div>
+            <form id="formResgister" class="" action="index.html" method="post">
+              <input class="textoinput" type="text" name="name" placeholder="Nombre">
+              <input class="textoinput" type="text" name="lastname" value="" placeholder="Apellido">
+              <input class="inputfoms" type="text" name="email" value="" placeholder="numero de celular o correo">
+              <br>
+              <input class="inputfoms" type="password" name="password" value="" placeholder=Contraseña>
+
+              <p>Fecha de nacimiento</p>
+              <input type="radio" name="gender" value="male">Hombre</input>
+              <input type="radio" name="gender" value="female">Mujer</input>
+              <p id="conditions">
+                Al hacer clic en "Abrir una cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies. Es posible que recibas notificaciones por SMS de Facebook, que puedes desactivar en cualquier momento.
+              </p>
+              <br>
+              <input id="register-button" type="submit" name="" value="Abir una cuenta">
+            </form>
+
+        </div>
+
+      </div>
     </div>
+
+    <footer>
+    </footer>
 
   </body>
 </html>
