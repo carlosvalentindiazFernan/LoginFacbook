@@ -76,7 +76,7 @@
     static ValidationSIngIn(data){
 
       for (let i of Storag.getUsers() ) {
-        if(data.email == i.email && data.password == r.password){
+        if(data.email == i.email && data.password == i.password){
           return true;
         }
       }
@@ -89,7 +89,7 @@
   class UserAuthentication {
 
     static singin(jsonSingin){
-      if(!Validation.ValidationSIngIn(jsonSingin)){
+      if(Validation.ValidationSIngIn(jsonSingin)){
         alert("bienvenido");
       }else{
         alert("Este usuario no existe");
@@ -100,6 +100,7 @@
 
       if(Validation.validateExists(jsonSingUp)){
         Storag.setUser(jsonSingUp);
+        alert("usuario registrado");
       }else{
         alert("Este correo ya existe");
       }
@@ -110,6 +111,7 @@
 
   //sIngin
   document.addEventListener("DOMContentLoaded", function(event) {
+
      	singinform.addEventListener( "submit",  e => {
         e.preventDefault();
 
@@ -124,24 +126,21 @@
 
      	}, false);
 
+      //singup
+
+      singupform.addEventListener( "submit", e  => {
+        e.preventDefault();
+
+        let index =['name','lastname','email','password','gender'];
+        let data ={};
+        for (let i = 0; i < singupform.length-2; i++) {
+            data[index[i]] = singupform.elements[i].value;
+         }
+
+        UserAuthentication.singup(data);
+
+      }, false);
+
    });
-
-   //singup
-
-   document.addEventListener("DOMContentLoaded", function(event) {
-      	singupform.addEventListener( "submit", e  => {
-          e.preventDefault();
-
-          let index =['name','lastname','email','password','gender'];
-          let data ={};
-          for (let i = 0; i < singupform.length-2; i++) {
-              data[index[i]] = singupform.elements[i].value;
-           }
-
-          UserAuthentication.singup(data);
-
-        }, false);
-
-    });
 
 })();
