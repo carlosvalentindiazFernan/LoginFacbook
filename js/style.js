@@ -5,57 +5,99 @@
 
   //sIngin
   const singinform = document.getElementById('singinform');
-//  const email = document.getElementById('email_singin');
-//  const password = document.getElementById('password_singin');
-//  const singinbtn = document.getElementById('singin')
 
 //SingUp
-  const singupform = document.getElementById('formResgister')
+  const singupform = document.getElementById('formResgister');
+
+  class Storage{
+
+    constructor(){
+      this.users  =[
+        {
+          name:"carlos",
+          lastname: "diaz",
+          email:"fernancarldiaz@outlook.com",
+          password:"Raana+12a",
+          gender:"man"
+        }
+      ]
+    }
+
+    getUsers(){
+      return this.users;
+    }
+
+    setUser(User){
+      this.users.push(User);
+    }
+
+    localStorage(){
+      let initialExist = window.localStorage.getItem('data');
+
+    	if(initialExist){
+    		window.myData = JSON.parse(initialExist);
+      }else{
+
+        let Users =[
+          {
+            name:"carlos",
+            lastname: "diaz",
+            email:"fernancarldiaz@outlook.com",
+            password:"Raana+12a",
+            gender:"man"
+          }
+        ];
+
+        window.localStorage.setItem('data',JSON.stringify(Users));
+        window.myData = JSON.parse(window.localStorage.getItem('data'));
+        console.log(Users);
+
+      }
+
+    }
+
+  }
 
   class Validation{
 
-    toJSONString( form ) {
-  		let obj = {};
-  		let elements = form.querySelectorAll( "input, select, radio" );
 
-  		for( let i = 0; i < elements.length; ++i ) {
-
-  			let element = elements[i];
-  		  let name = element.name;
-  			let value = element.value;
-
-  			if( name ) {
-  				obj[ name ] = value;
-  			}
-  		}
-
-  		return JSON.stringify( obj );
-  	}
+    static validateExists(){
+      return true
+    }
 
   }
 
   class UserAuthentication {
 
-    singin(jsonSingin){
-      alert(jsonSingin)
+    static singin(jsonSingin){
+      alert(jsonSingin);
     }
 
-    singup(jsonSingUp){
+    static singup(jsonSingUp){
+      let data = new Storage();
 
+      data.setUser(jsonSingUp);
+      Validation.validateExists(jsonSingUp);
+      console.log(data.getUsers());
     }
   }
 
 
+
   //sIngin
   document.addEventListener("DOMContentLoaded", function(event) {
-     	singinform.addEventListener( "submit", function( e ) {
+     	singinform.addEventListener( "submit",  e => {
         e.preventDefault();
-        let valid = new Validation();
-        let singinUser = new UserAuthentication();
-     		let json = valid.toJSONString( this );
-        singinUser.singin(json);
 
-        alert(json);
+        let index =['email','password'];
+        let data ={};
+        for (let i = 0; i < singinform.length-1; i++) {
+          data[index[i]] = singinform.elements[i].value;
+         }
+         console.log(data);
+
+         UserAuthentication.singin(data);
+
      	}, false);
 
    });
@@ -63,15 +105,18 @@
    //singup
 
    document.addEventListener("DOMContentLoaded", function(event) {
-      	singupform.addEventListener( "submit", function( e ) {
+      	singupform.addEventListener( "submit", e  => {
           e.preventDefault();
-          let valid = new Validation();
-          let singinUser = new UserAuthentication();
-      	  let json = valid.toJSONString( this );
-//          singinUser.singin(json);
 
-         alert(json);
-      	}, false);
+          let index =['name','lastname','email','password','gender'];
+          let data ={};
+          for (let i = 0; i < singupform.length-2; i++) {
+              data[index[i]] = singupform.elements[i].value;
+           }
+
+          UserAuthentication.singup(data);
+
+        }, false);
 
     });
 
