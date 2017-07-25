@@ -23,11 +23,11 @@
       ]
     }
 
-    getUsers(){
+     getUsers(){
       return this.users;
     }
 
-    setUser(User){
+     setUser(User){
       this.users.push(User);
     }
 
@@ -58,11 +58,30 @@
 
   }
 
+  let Storag = new Storage();
+
   class Validation{
 
+    static validateExists(data){
 
-    static validateExists(){
-      return true
+      for (let i of Storag.getUsers() ) {
+        if(data.email == i.email){
+          return false;
+        }
+      }
+
+       return true;
+    }
+
+    static ValidationSIngIn(data){
+
+      for (let i of Storag.getUsers() ) {
+        if(data.email == i.email && data.password == r.password){
+          return true;
+        }
+      }
+
+       return false;
     }
 
   }
@@ -70,15 +89,20 @@
   class UserAuthentication {
 
     static singin(jsonSingin){
-      alert(jsonSingin);
+      if(!Validation.ValidationSIngIn(jsonSingin)){
+        alert("bienvenido");
+      }else{
+        alert("Este usuario no existe");
+      }
     }
 
     static singup(jsonSingUp){
-      let data = new Storage();
 
-      data.setUser(jsonSingUp);
-      Validation.validateExists(jsonSingUp);
-      console.log(data.getUsers());
+      if(Validation.validateExists(jsonSingUp)){
+        Storag.setUser(jsonSingUp);
+      }else{
+        alert("Este correo ya existe");
+      }
     }
   }
 
