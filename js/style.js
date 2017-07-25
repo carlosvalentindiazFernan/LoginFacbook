@@ -4,17 +4,19 @@
 (function authentication() {
 
   //sIngin
-  const singupform = document.getElementById('singupform');
-  const email = document.getElementById('email_singin');
-  const password = document.getElementById('password_singin');
-  const singinbtn = document.getElementById('singin')
+  const singinform = document.getElementById('singinform');
+//  const email = document.getElementById('email_singin');
+//  const password = document.getElementById('password_singin');
+//  const singinbtn = document.getElementById('singin')
 
+//SingUp
+  const singupform = document.getElementById('formResgister')
 
   class Validation{
 
     toJSONString( form ) {
   		let obj = {};
-  		let elements = form.querySelectorAll( "input, select, textarea" );
+  		let elements = form.querySelectorAll( "input, select, radio" );
 
   		for( let i = 0; i < elements.length; ++i ) {
 
@@ -37,12 +39,16 @@
     singin(jsonSingin){
       alert(jsonSingin)
     }
+
+    singup(jsonSingUp){
+
+    }
   }
 
 
   //sIngin
   document.addEventListener("DOMContentLoaded", function(event) {
-     	singupform.addEventListener( "submit", function( e ) {
+     	singinform.addEventListener( "submit", function( e ) {
         e.preventDefault();
         let valid = new Validation();
         let singinUser = new UserAuthentication();
@@ -54,5 +60,19 @@
 
    });
 
+   //singup
+
+   document.addEventListener("DOMContentLoaded", function(event) {
+      	singupform.addEventListener( "submit", function( e ) {
+          e.preventDefault();
+          let valid = new Validation();
+          let singinUser = new UserAuthentication();
+      	  let json = valid.toJSONString( this );
+//          singinUser.singin(json);
+
+         alert(json);
+      	}, false);
+
+    });
 
 })();
