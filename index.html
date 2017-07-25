@@ -10,40 +10,44 @@
     <nav>
       <img id="logo" src="https://www.facebook.com/rsrc.php/v3/y4/r/gf6iHxsw8zm.png"
           width="140px" height="35px">
-      <table cellspacing="0" role="presentation">
-        <tbody>
-          <tr>
-            <td>
-              <label for="email" class="labellogin">Email</label>
-            </td>
-            <td>
-              <label for="password" class="labellogin">Password</label>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="text" name="" value="">
-            </td>
-            <td>
-              <input type="password" name="" value="">
-            </td>
+      <form id="singupform" method="get">
+        <table cellspacing="0" role="presentation">
+          <tbody>
+            <tr>
+              <td>
+                <label for="email" class="labellogin">Email</label>
+              </td>
+              <td>
+                <label for="password" class="labellogin" r>Password</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="email" id="email_singin" name="email"  required>
+              </td>
+              <td>
+                <input type="password" id="password_singin" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    name="password" required>
+              </td>
 
-            <td>
-              <input id="singin" type="submit" name="" value="Iniciar sesión">
-            </td>
+              <td>
+                <input id="singin" type="submit" name="" value="Iniciar sesión">
+              </td>
 
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <a href="#" class="labellogin">	¿Olvidaste tu cuenta?</a>
-            </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <a href="#" class="labellogin">	¿Olvidaste tu cuenta?</a>
+              </td>
 
-          </tr>
+            </tr>
 
-        </tbody>
+          </tbody>
 
-      </table>
+        </table>
+      </form>
+
     </nav>
 
     <div id="container">
@@ -58,11 +62,15 @@
           <h2>Abre una cuenta</h2>
           <p id="descripttionresgister">Es gratis y lo será siempre</div>
             <form id="formResgister" class="" action="index.html" method="post">
-              <input class="textoinput" type="text" name="name" placeholder="Nombre">
-              <input class="textoinput" type="text" name="lastname" value="" placeholder="Apellido">
-              <input class="inputfoms" type="text" name="email" value="" placeholder="numero de celular o correo">
+              <input id="" class="textoinput" type="text" name="name"
+                  placeholder="Nombre" required>
+              <input class="textoinput" type="text" name="lastname" value=""
+                  placeholder="Apellido" required>
+              <input class="inputfoms" type="text" name="email" value=""
+                  placeholder="numero de celular o correo" required>
               <br>
-              <input class="inputfoms" type="password" name="password" value="" placeholder=Contraseña>
+              <input class="inputfoms" type="password" name="password" value=""
+                  placeholder=Contraseña pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 
               <p>Fecha de nacimiento</p>
               <input type="radio" name="gender" value="male">Hombre</input>
@@ -81,6 +89,6 @@
 
     <footer>
     </footer>
-
+    <script src="js/style.js"></script>
   </body>
 </html>
